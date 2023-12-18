@@ -30,11 +30,14 @@ GameWindow::GameWindow() {
     });
 
     glEnable(GL_DEPTH_TEST);    //for depth buffer
-    this->enableWiremode();    //wiremode
+    this->enableGameOption(GameOption::WIREMODE);
 }
 void GameWindow::gameLoop(){
     while (!glfwWindowShouldClose(window)){
         this->processInputs();
+
+
+
 
         glfwSwapBuffers(window);
         glfwPollEvents();
@@ -47,9 +50,15 @@ void GameWindow::processInputs(){
     }
     
 }
-
-void GameWindow::enableWiremode(){
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+void GameWindow::enableGameOption(GameOption option){
+    switch (option){
+    case WIREMODE:
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        break;
+    
+    default:
+        break;
+    }
 }
 GameWindow::~GameWindow(){
     glfwTerminate();

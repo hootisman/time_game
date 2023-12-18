@@ -5,6 +5,10 @@
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
 
+enum GameOption {
+    WIREMODE,
+};
+
 class GameWindow{
     public:
         int WIDTH, HEIGHT;
@@ -13,8 +17,9 @@ class GameWindow{
         GameWindow();
         void gameLoop();
         void processInputs();
-        void enableWiremode();
+        void enableGameOption(GameOption);
         ~GameWindow();
 };
+
 
 #endif
