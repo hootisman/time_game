@@ -20,6 +20,7 @@ GameWindow::GameWindow() {
     //loads GLAD
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         std::cout << "Failed to init GLAD" << std::endl;
+        glfwTerminate();
         exit(-1);
     }
 
@@ -30,12 +31,14 @@ GameWindow::GameWindow() {
     });
 
     glEnable(GL_DEPTH_TEST);    //for depth buffer
-    this->enableGameOption(GameOption::WIREMODE);
+    this->enableGameOption(GameOption::WIREMODE);       //enables wiremode
 }
 void GameWindow::gameLoop(){
     while (!glfwWindowShouldClose(window)){
         this->processInputs();
 
+        glClearColor(0.1f, 0.5f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 
