@@ -4,6 +4,8 @@
 GameWindow::GameWindow() {
     this->WIDTH = 800;
     this->HEIGHT = 600;
+    this->world;
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -42,6 +44,9 @@ void GameWindow::gameLoop(){
 
 
 
+        this->world.process();
+        this->renderAll();
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -52,6 +57,10 @@ void GameWindow::processInputs(){
         glfwSetWindowShouldClose(this->window, true);
     }
     
+}
+
+void GameWindow::renderAll(){
+    std::cout << "rendering all" << std::endl;
 }
 void GameWindow::enableGameOption(GameOption option){
     switch (option){
