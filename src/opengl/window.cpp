@@ -4,7 +4,7 @@
 GameWindow::GameWindow() {
     this->WIDTH = 800;
     this->HEIGHT = 600;
-    this->world;
+    // this->world;
 
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -32,6 +32,9 @@ GameWindow::GameWindow() {
         glViewport(0,0,width,height);
     });
 
+    
+    // ShaderProgram shaderProgram;
+
     glEnable(GL_DEPTH_TEST);    //for depth buffer
     this->enableGameOption(GameOption::WIREMODE);       //enables wiremode
 }
@@ -43,8 +46,7 @@ void GameWindow::gameLoop(){
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
-
-        this->world.process();
+        // this->world.process();
         this->renderAll();
 
         glfwSwapBuffers(window);
